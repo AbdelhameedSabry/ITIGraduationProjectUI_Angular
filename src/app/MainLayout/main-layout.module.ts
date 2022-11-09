@@ -4,6 +4,7 @@ import { HomeComponent } from './home/home.component';
 import { OurcategoriesComponent } from './ourcategories/ourcategories.component';
 import { AboutusComponent } from './aboutus/aboutus.component';
 import { AppRoutingModule } from '../app-routing.module';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -16,7 +17,10 @@ import { AppRoutingModule } from '../app-routing.module';
 
   imports: [
     CommonModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
+    
+        
   ],
 
   exports: [

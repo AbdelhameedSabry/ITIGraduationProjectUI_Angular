@@ -14,6 +14,7 @@ const routes: Routes = [
   { path: 'Login', component: LoginComponent },
   { path: 'Register', component: RegisterComponent },
   { path: 'AllProducts', component: AllproductComponent },
+  { path: 'AllProducts/:Pid', component: AllproductComponent },
   { path: 'myOrders', component: AllordersComponent },
   { path: 'myCart', component: CartComponent },
   { path: '**', component: NotfoundComponent },
