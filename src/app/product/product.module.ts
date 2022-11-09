@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AllproductComponent } from './allproduct/allproduct.component';
 import { FormsModule } from '@angular/forms';
-import { BrowserModule } from '@angular/platform-browser';
+import { ProductRoutingModule } from '../product/product-routing.module';
 
 
 
@@ -13,7 +13,7 @@ import { BrowserModule } from '@angular/platform-browser';
   imports: [
     CommonModule,
     FormsModule,
-    BrowserModule
+    ProductRoutingModule
   ],
   exports: [
     AllproductComponent
