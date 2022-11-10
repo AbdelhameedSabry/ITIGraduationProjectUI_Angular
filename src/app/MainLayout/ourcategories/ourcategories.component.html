@@ -1,10 +1,5 @@
-<!-- /#advantages-->
-<!-- *** ADVANTAGES END ***-->
-<!--
-      *** HOT PRODUCT SLIDESHOW ***
-      _________________________________________________________
-      -->
-<div id="all">
+
+<div id="all" style="margin-bottom:100px;">
   <div id="content">
     <div id="hot">
       <div class="box py-4">
@@ -16,52 +11,35 @@
           </div>
         </div>
       </div>
-
-      <div class="container">
-        <div class="product-slider owl-carousel owl-theme">
-          
-         <div class="item" *ngFor="let item of catContainer">
-            <div class="product" (click)="ShowProduct(item.Id)">
-              <div class="flip-container">
-                <div class="flipper">
-                  <div class="front"><img src="https://picsum.photos/200/300" alt=""
-                        class="img-fluid">
-                  </div>
-                  <div class="back"><img src="https://picsum.photos/200/300" alt=""
-                        class="img-fluid">
-                  </div>
-                </div>
-              </div><img src="https://picsum.photos/200/300" alt=""
-                  class="img-fluid">
-              <div class="text">
-                <h3>{{item.CategoryName}}</h3>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-2 col-md-3 col-6" *ngFor="let item of catContainer" (click)="ShowProduct(item.Id)">
+          <div class="flip-card">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <img src="https://picsum.photos/150/250" alt="" class="img-fluid">
               </div>
-              <!-- /.text-->
-              <div class="ribbon sale" *ngIf="item.Id>400">
-                <div class="theribbon">SALE</div>
-                <div class="ribbon-background"></div>
+              <div class="flip-card-back">
+                <img src="https://picsum.photos/150/250" alt="" class="img-fluid">
               </div>
-              <!-- /.ribbon-->
-              <div class="ribbon new">
-                <div class="theribbon">NEW</div>
-                <div class="ribbon-background"></div>
-              </div>
-              <!-- /.ribbon-->
-              <div class="ribbon gift">
-                <div class="theribbon">GIFT</div>
-                <div class="ribbon-background"></div>
-              </div>
-              <!-- /.ribbon-->
             </div>
-            <!-- /.product-->
+            <div class="bg-light d-flex align-items-center justify-content-center" style="height: 50px;">
+              <h3>{{item.CategoryName}}</h3>
+            </div>
+            <!-- /.ribbon-->
+            <div class="ribbon new" *ngIf="item.Id>400">
+              <div class="theribbon">NEW</div>
+              <div class="ribbon-background"></div>
+            </div>
           </div>
-
-
-
-
-
-      <!-- /#hot-->
-      <!-- *** HOT END ***-->
+          <!-- /.text-->
+          <div class="ribbon sale">
+            <div class="theribbon">SALE</div>
+            <div class="ribbon-background"></div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
