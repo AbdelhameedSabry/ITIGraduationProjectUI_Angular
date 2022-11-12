@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { CategoryService } from 'src/app/services/category.service';
-import { ProductService } from 'src/app/services/product.service';
+import { CategoryService } from 'src/app/_services/category.service';
+import { ProductService } from 'src/app/_services/product.service';
 import { Category } from 'src/app/_models/category';
 
 @Component({
@@ -10,16 +10,19 @@ import { Category } from 'src/app/_models/category';
   styleUrls: ['./ourcategories.component.css']
 })
 export class OurcategoriesComponent implements OnInit {
+  catContainer: Category[] = []
 
-  constructor(public catSevice:CategoryService,public prodserve:ProductService,public router:Router) { }
-  catContainer:Category[]=[]
-
-  ShowProduct(id:number){
-    this.router.navigate(['/AllProducts',id])
-  }
+  constructor(
+    public catSevice: CategoryService,
+    public prodserve: ProductService,
+    public router: Router) { }
 
   ngOnInit(): void {
-    this.catContainer=this.catSevice.getAllCategory();
+    this.catContainer = this.catSevice.getAllCategory();
+  }
+
+  ShowProduct(id: number) {
+    this.router.navigate(['/Category/', id, 'Products'])
   }
 
 }

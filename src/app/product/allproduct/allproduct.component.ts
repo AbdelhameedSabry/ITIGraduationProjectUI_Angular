@@ -1,6 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit, Component, ElementRef, Input, OnChanges, OnDestroy, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ProductService } from 'src/app/services/product.service';
+import { CategoryService } from 'src/app/_services/category.service';
+import { ProductService } from 'src/app/_services/product.service';
+import { Category } from 'src/app/_models/category';
 import { Product } from 'src/app/_models/product';
 
 @Component({
@@ -10,16 +12,22 @@ import { Product } from 'src/app/_models/product';
 })
 export class AllproductComponent implements OnInit {
 
-   
+  categories: Category[]
+  productContainer: Product[]
+  curuntId: number = 0
 
-  curuntId:number=0
-  constructor(public productService:ProductService,public AR:ActivatedRoute) { }
-  productContainer:Product[]=[]
-  
+  constructor(
+    private productService: ProductService,
+    private activeRouter: ActivatedRoute,
+    private categoryservice: CategoryService) {
 
-  ngOnInit(): void {
-    this.curuntId=Number(this.AR.snapshot.paramMap.get("Pid")) 
-    this.productContainer=this.productService.GetAllProductsByCatId(this.curuntId);
+    this.categories = []
+    this.productContainer = []
   }
 
+  ngOnInit(): void {
+    this.curuntId = Number(this.activeRouter.snapshot.paramMap.get("Cid"))
+    this.categories = this.categoryservice.getAllCategory()
+    this.productContainer = this.productService.GetAllProductsByCatId(this.curuntId);
+  }
 }

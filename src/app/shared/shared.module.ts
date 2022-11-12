@@ -16,7 +16,7 @@ import { NotfoundComponent } from './notfound/notfound.component';
   ],
   imports: [
     CommonModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   exports: [
     HeaderComponent,

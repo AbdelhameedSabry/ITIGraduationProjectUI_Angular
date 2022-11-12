@@ -65,7 +65,7 @@ h1 {
 .menu-large .megamenu {
   padding: 20px;
   width: 100%;
-  max-width: 1140px;
+  max-width: 500px;
   left: 50%;
   -webkit-transform: translateX(-50%);
   transform: translateX(-50%);

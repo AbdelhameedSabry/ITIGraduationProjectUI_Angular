@@ -13,7 +13,7 @@ const routes: Routes = [
   { path: 'Login', component: LoginComponent },
   { path: 'Register', component: RegisterComponent },
   { path: 'AllProducts', component: AllproductComponent },
-  { path: 'AllProducts/:Pid', loadChildren: () => import('./product/product.module').then(m => m.ProductModule) },
+  { path: 'Category', loadChildren: () => import('./product/product.module').then(m => m.ProductModule) },
   { path: 'myOrders', loadChildren: () => import('./order/order.module').then(m => m.OrderModule) },
   { path: 'myCart', component: CartComponent },
   { path: '**', component: NotfoundComponent },

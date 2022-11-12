@@ -4,9 +4,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MainLayoutModule } from './MainLayout/main-layout.module';
-import { AllproductComponent } from './product/allproduct/allproduct.component';
 import { ProductModule } from './product/product.module';
 import { SharedModule } from './shared/shared.module';
+
 
 @NgModule({
   declarations: [
@@ -17,8 +17,7 @@ import { SharedModule } from './shared/shared.module';
     AppRoutingModule,
     SharedModule,
     MainLayoutModule,
-    ProductModule
-
+    ProductModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
