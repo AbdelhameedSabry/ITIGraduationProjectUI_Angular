@@ -22,12 +22,14 @@
             </div>
             <div class="card-body">
               <ul class="nav nav-pills flex-column category-menu" *ngFor="let item of categories">
-                <li><a [routerLink]="['/Category',item.Id,'Products']" class="nav-link">{{item.CategoryName}} <span
-                      class="badge badge-secondary">42</span></a></li>
+                <li (click)="changedata(item.Id)">
+                  <a [routerLink]="['/Category',item.Id,'Products']" routerLinkActive="active"
+                    class="nav-link">{{item.CategoryName}} <span class="badge badge-secondary">42</span>
+                  </a>
+                </li>
               </ul>
             </div>
           </div>
-
           <!-- *** MENUS AND FILTERS END ***-->
         </div>
         <div class="col-lg-9">
@@ -53,7 +55,6 @@
                     <div class="back"><img src="../assets/img/product1_2.jpg" alt="" class="img-fluid"></div>
                   </div>
                 </div><img src="../assets/img/product1.jpg" alt="" class="img-fluid">
-
                 <div class="text">
                   <h3>{{item.Name}}</h3>
                   <p class="price">
@@ -62,9 +63,6 @@
                   <p class="buttons">
                     <a [routerLink]="['/Category',item.CategoryId,'Products',item.ProductId]"
                       class="btn btn-outline-secondary">View detail</a>
-                    <a href="basket.html" class="btn btn-primary">
-                      <i class="fa fa-shopping-cart"></i>Add to cart
-                    </a>
                   </p>
                 </div>
               </div>

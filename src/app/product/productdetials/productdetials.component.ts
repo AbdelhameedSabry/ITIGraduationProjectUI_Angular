@@ -28,5 +28,4 @@ export class ProductdetialsComponent implements OnInit {
     this.categories = this.categoryservice.getAllCategory()
     this.product = this.productservice.GetProductById(this.currentproId)
   }
-
 }

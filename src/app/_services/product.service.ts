@@ -12,7 +12,6 @@ export class ProductService {
     new Product(4, 200, "product4", 1500, "DDDDDDD"),
     new Product(5, 200, "product5", 143, "EEEEEEEEEEE"),
     new Product(6, 200, "product6", 1500, "FFFFFFFF"),
-
   ]
 
   proInCat: Product[] = [];
@@ -22,6 +21,7 @@ export class ProductService {
   }
 
   GetAllProductsByCatId(id: number): Product[] {
+    this.proInCat=[]
     for (let i = 0; i < this.products.length; i++) {
       if (this.products[i].CategoryId == id) {
         this.proInCat.push(this.products[i])

@@ -29,8 +29,9 @@
               </ul>
             </div>
           </div>
-          <div class="banner"><a href="#"><img src="../assets/img/banner.jpg" alt="sales 2014" class="img-fluid"></a></div>
-       
+          <div class="banner"><a href="#"><img src="../assets/img/banner.jpg" alt="sales 2014" class="img-fluid"></a>
+          </div>
+
           <!-- *** MENUS AND FILTERS END ***-->
         </div>
         <div class="col-lg-9 order-1 order-lg-2">
@@ -54,12 +55,33 @@
             </div>
             <div class="col-md-6">
               <div class="box">
-                <h1 class="text-center">{{product.Name}}</h1>
+                <h3 class="text-center">{{product.Name}}</h3>
                 <p class="goToDescription">{{product.Description}}</p>
-                <p class="price">{{product.Price | currency}}</p>
+                <p for="color" class="h4  d-inline-block m-3">Color</p>
+                <select class="form-select col-5" aria-label="Default select example" id="color">
+                  <option selected>Choise Color</option>
+                  <option value="1">White</option>
+                  <option value="2">Black</option>
+                  <option value="3">Blue</option>
+                </select><br>
+
+                <p for="color" class="h4 d-inline-block m-3">Size </p>
+                <select class="form-select col-5" aria-label="Default select example" id="color">
+                  <option selected>Choise Size</option>
+                  <option value="1">Small</option>
+                  <option value="2">Medium</option>
+                  <option value="3">Large</option>
+                </select>
+
+                <div class="mb-3">
+                  <p for="qty" class="form-label h4 d-inline-block m-3">Quantity</p>
+                  <input type="text" class="form-control d-inline col-3" name="qty" id="" aria-describedby="helpId"
+                    placeholder="">
+                </div>
+
+                <p class="h4 mx-3">Price: <label class="text-danger">${{product.Price}}</label> </p>
                 <p class="text-center buttons"><a href="basket.html" class="btn btn-primary"><i
-                      class="fa fa-shopping-cart"></i> Add to cart</a><a href="basket.html"
-                    class="btn btn-outline-primary"><i class="fa fa-heart"></i> Add to wishlist</a></p>
+                      class="fa fa-shopping-cart"></i> Add to cart</a></p>
               </div>
               <div data-slider-id="1" class="owl-thumbs">
                 <button class="owl-thumb-item"><img src="../assets/img/detailsquare.jpg" alt=""
