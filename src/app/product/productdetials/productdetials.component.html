@@ -38,7 +38,7 @@
           </div>
 
           <!-- *** MENUS AND FILTERS END ***-->
-        </div>
+        </div> 
         <div class="col-lg-9 order-1 order-lg-2">
           <div id="productMain" class="row">
             <div class="col-md-6">
@@ -60,8 +60,8 @@
             </div>
             <div class="col-md-6">
               <div class="box">
-                <h3 class="text-center">{{product.Name}}</h3>
-                <p class="goToDescription">{{product.Description}}</p>
+                <h3 class="text-center">{{product.productName}}</h3>
+                <p class="goToDescription">{{product.description}}</p>
                 <p for="color" class="h4  d-inline-block m-3">Color</p>
                 <select class="form-select col-5" [(ngModel)]="cardDetails.color" aria-label="Default select example"
                   id="color">
@@ -86,7 +86,7 @@
                     [(ngModel)]="cardDetails.Count" id="" aria-describedby="helpId" placeholder="">
                 </div>
 
-                <p class="h4 mx-3">Price: <label class="text-danger">${{product.Price}}</label> </p>
+                <p class="h4 mx-3">Price: <label class="text-danger">${{product.price}}</label> </p>
                 <p class="text-center buttons"><button (click)="AddCard(product)" class="btn btn-primary"><i
                       class="fa fa-shopping-cart"></i> Add to cart</button></p>
               </div>

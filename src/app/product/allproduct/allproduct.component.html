@@ -56,13 +56,13 @@
                   </div>
                 </div><img src="../assets/img/product1.jpg" alt="" class="img-fluid">
                 <div class="text">
-                  <h3>{{item.Name}}</h3>
+                  <h3>{{item.productName}}</h3>
                   <p class="price">
-                    <del></del>{{item.Price |  currency }}
+                    <del></del>{{item.price|  currency }}
                   </p>
                   <p class="buttons">
-                    <a [routerLink]="['/Category',item.CategoryId,'Products',item.ProductId]"
-                      class="btn btn-outline-secondary">View detail</a>
+                    <!-- <a [routerLink]="['/Category',item.CategoryId,'Products',item.ProductId]"
+                      class="btn btn-outline-secondary">View detail</a> -->
                   </p>
                 </div>
               </div>

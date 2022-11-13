@@ -34,15 +34,17 @@ export class ProductdetialsComponent implements OnInit, AfterViewInit {
     this.currentproId = Number(this.activeRoute.snapshot.paramMap.get('Pid'))
     this.categoryservice.getAllCategory().subscribe(cats => {
       this.categories = cats;
+    }) 
+    this.productservice.GetAllProductsByCatId(this.currentproId).subscribe(pro => {
+      this.product = pro;
     })
-    this.product = this.productservice.GetProductById(this.currentproId)
   }
 
   AddCard(product: Product) {
-    this.cardDetails.Id = product.ProductId
-    this.cardDetails.Name = product.Name
-    this.cardDetails.Price = product.Price
-    this.cardDetails.totalPrice = product.Price * this.cardDetails.Count
+    this.cardDetails.Id = product.id
+    this.cardDetails.Name = product.productName
+    this.cardDetails.Price = product.price
+    this.cardDetails.totalPrice = product.price * this.cardDetails.Count
     if (localStorage.getItem('card') != null) {
       this.cartProducts = JSON.parse(localStorage.getItem('card')!);
       this.cartProducts.push(this.cardDetails)

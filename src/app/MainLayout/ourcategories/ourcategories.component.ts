@@ -19,13 +19,12 @@ export class OurcategoriesComponent implements OnInit {
     public router: Router,
     private sanitizer:DomSanitizer) { } 
 
-    image!:ArrayBuffer
+    image!:any
     
   ngOnInit(): void {
     this.catSevice.getAllCategory().subscribe(cats => {
       this.catContainer = cats;
-      // let objectURL = 'cats[0]:image/png;base64,' + cats[0];
-      // let image = this.sanitizer.bypassSecurityTrustUrl(objectURL);
+
       console.log(cats);
     })
   }
