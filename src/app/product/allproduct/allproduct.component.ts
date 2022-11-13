@@ -17,7 +17,7 @@ export class AllproductComponent implements OnInit {
   categories: Category[]
   productContainer: Product[]
   curuntId: number = 0
-  showCategory!:CategoryWithProducts
+  showCategory!: CategoryWithProducts
 
   constructor(
     private productService: ProductService,
@@ -37,15 +37,14 @@ export class AllproductComponent implements OnInit {
     })
     this.categoryservice.getCategoryById(this.curuntId).subscribe(cat => {
       this.showCategory = cat;
-      console.log(this.showCategory);
+      this.productContainer = this.showCategory.products;
     })
-    this.productContainer = this.showCategory.products;
   }
 
   changedata(catid: number) {
     this.categoryservice.getCategoryById(catid).subscribe(cat => {
       this.showCategory = cat;
+      this.productContainer = this.showCategory.products;
     })
-    this.productContainer = this.showCategory.products;
   }
 }
