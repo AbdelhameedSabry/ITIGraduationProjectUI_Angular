@@ -1,26 +1,24 @@
 import { Injectable } from '@angular/core';
 import { Category } from '../_models/category';
+import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CategoryService {
 
-  categories:Category[]=[
-    new Category (100 ,"Blose"),
-    new Category (200,"Pantalon"),
-    new Category (300,"Jeup"),
-    new Category (400,"fff"),
-    new Category (500,"ffff"),
-    new Category (600,"dddd")
-  ];
+  categories:Category[]=[];
+
+
+  constructor(private http:HttpClient) { }
 
   getAllCategory(){
-    return this.categories;
+    return this.http.get<Category[]>(environment.baseUrl + "Categories")
   }
 
   AddCategory(Cat:Category){
-    this.categories.push(new Category(Cat.Id,Cat.CategoryName))
+    this.categories.push()
   }
 
   getCategoryById(id:number){
@@ -29,11 +27,9 @@ export class CategoryService {
 
   deleteCategoryById(id:number){
     for(let i=0;i<this.categories.length;i++){
-      if(this.categories[i].Id==id){
+      if(this.categories[i].id==id){
          this.categories.splice(i,1);        
       }
     }
   }
-
-  constructor() { }
 }

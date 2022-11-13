@@ -32,7 +32,9 @@ export class ProductdetialsComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.currentproId = Number(this.activeRoute.snapshot.paramMap.get('Pid'))
-    this.categories = this.categoryservice.getAllCategory()
+    this.categoryservice.getAllCategory().subscribe(cats => {
+      this.categories = cats;
+    })
     this.product = this.productservice.GetProductById(this.currentproId)
   }
 

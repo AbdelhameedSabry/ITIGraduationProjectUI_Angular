@@ -13,7 +13,7 @@
     </div>
     <div class="container">
       <div class="row">
-        <div class="col-lg-2 col-md-3 col-6" *ngFor="let item of catContainer" (click)="ShowProduct(item.Id)">
+        <div class="col-lg-2 col-md-3 col-6" *ngFor="let item of catContainer" (click)="ShowProduct(item.id)">
           <div class="flip-card">
             <div class="flip-card-inner">
               <div class="flip-card-front">
@@ -24,10 +24,10 @@
               </div>
             </div>
             <div class="bg-light d-flex align-items-center justify-content-center" style="height: 50px;">
-              <h3>{{item.CategoryName}}</h3>
+              <h3>{{item.cateogoryName}}</h3>
             </div>
             <!-- /.ribbon-->
-            <div class="ribbon new" *ngIf="item.Id>400">
+            <div class="ribbon new" *ngIf="item.id>400">
               <div class="theribbon">NEW</div>
               <div class="ribbon-background"></div>
             </div>

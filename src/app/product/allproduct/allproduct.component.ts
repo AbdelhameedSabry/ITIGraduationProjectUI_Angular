@@ -29,7 +29,9 @@ export class AllproductComponent implements OnInit {
 
   ngOnInit(): void {
     this.curuntId = Number(this.activeRouter.snapshot.paramMap.get("Cid"))
-    this.categories = this.categoryservice.getAllCategory()
+    this.categoryservice.getAllCategory().subscribe(cats => {
+      this.categories = cats;
+    })
     this.productContainer = this.productService.GetAllProductsByCatId(this.curuntId);
   }
 

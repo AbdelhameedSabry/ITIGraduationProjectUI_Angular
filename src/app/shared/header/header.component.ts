@@ -18,7 +18,6 @@ export class HeaderComponent implements OnInit, AfterViewChecked {
 
 
   ngOnInit(): void {
-    this.cats = this.categoryservices.getAllCategory();
     if (localStorage.getItem('card') != null) {
       for (let i = 1; i <= JSON.parse(localStorage.getItem('card')!).length; i++) {
         this.len = i

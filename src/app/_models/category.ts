@@ -1,7 +1,5 @@
-export class Category {
-    constructor(public Id:number,public CategoryName:string) {}
+export interface Category {
+    id:number;
+    cateogoryName:string;
+    image:ArrayBuffer
 }
-
-
-
-

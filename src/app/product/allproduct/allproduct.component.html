@@ -22,9 +22,9 @@
             </div>
             <div class="card-body">
               <ul class="nav nav-pills flex-column category-menu" *ngFor="let item of categories">
-                <li (click)="changedata(item.Id)">
-                  <a [routerLink]="['/Category',item.Id,'Products']" routerLinkActive="active"
-                    class="nav-link">{{item.CategoryName}} <span class="badge badge-secondary">42</span>
+                <li (click)="changedata(item.id)">
+                  <a [routerLink]="['/Category',item.id,'Products']" routerLinkActive="active"
+                    class="nav-link">{{item.cateogoryName}} <span class="badge badge-secondary">42</span>
                   </a>
                 </li>
               </ul>
