@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CategoryService } from 'src/app/_services/category.service';
 import { ProductService } from 'src/app/_services/product.service';
@@ -11,12 +11,14 @@ import { CardDetails } from 'src/app/_models/CardDetails';
   templateUrl: './productdetials.component.html',
   styleUrls: ['./productdetials.component.css']
 })
-export class ProductdetialsComponent implements OnInit {
+export class ProductdetialsComponent implements OnInit, AfterViewInit {
   categories: Category[]
   product!: Product
   currentproId: number
   cardDetails: CardDetails = new CardDetails(0, "", "", "", "", 0, 0, 0)
   cartProducts: CardDetails[] = []
+  @ViewChild('snack') snack!: ElementRef
+  isadd: boolean = false
 
   constructor(
     private categoryservice: CategoryService,
@@ -26,6 +28,7 @@ export class ProductdetialsComponent implements OnInit {
     this.categories = []
     this.currentproId = 0
   }
+
 
   ngOnInit(): void {
     this.currentproId = Number(this.activeRoute.snapshot.paramMap.get('Pid'))
@@ -48,5 +51,18 @@ export class ProductdetialsComponent implements OnInit {
       this.cartProducts.push(this.cardDetails)
       localStorage.setItem('card', JSON.stringify(this.cartProducts))
     }
+    this.isadd = true
+    this.ngAfterViewInit()
+  }
+
+  ngAfterViewInit(): void {
+    this.snack.nativeElement.style.display = "none"
+    if(this.isadd){
+      this.snack.nativeElement.style.display = "block"
+      setInterval(() => {
+        this.snack.nativeElement.style.display = "none"
+      }, 2000)
+    }
+    this.isadd=false
   }
 }
