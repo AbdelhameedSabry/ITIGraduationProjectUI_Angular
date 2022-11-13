@@ -45,6 +45,7 @@ export class AllproductComponent implements OnInit {
     this.categoryservice.getCategoryById(catid).subscribe(cat => {
       this.showCategory = cat;
       this.productContainer = this.showCategory.products;
+      this.curuntId = Number(this.activeRouter.snapshot.paramMap.get("Cid"))
     })
   }
 }

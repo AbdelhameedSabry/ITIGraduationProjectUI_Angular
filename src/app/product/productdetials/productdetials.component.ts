@@ -37,6 +37,7 @@ export class ProductdetialsComponent implements OnInit, AfterViewInit {
     }) 
     this.productservice.GetAllProductsByCatId(this.currentproId).subscribe(pro => {
       this.product = pro;
+      console.log(this.product);
     })
   }
 

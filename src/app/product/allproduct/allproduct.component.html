@@ -24,7 +24,7 @@
               <ul class="nav nav-pills flex-column category-menu" *ngFor="let item of categories">
                 <li (click)="changedata(item.id)">
                   <a [routerLink]="['/Category',item.id,'Products']" routerLinkActive="active"
-                    class="nav-link">{{item.cateogoryName}} <span class="badge badge-secondary">42</span>
+                    class="nav-link">{{item.cateogoryName}} 
                   </a>
                 </li>
               </ul>
@@ -51,18 +51,18 @@
               <div class="product">
                 <div class="flip-container">
                   <div class="flipper">
-                    <div class="front"><img src="../assets/img/product1.jpg" alt="" class="img-fluid"></div>
-                    <div class="back"><img src="../assets/img/product1_2.jpg" alt="" class="img-fluid"></div>
+                    <div class="front"><img src="data:image/jpeg;base64,{{item.picture}}" alt="" class="img-fluid"></div>
+                    <div class="back"><img src="data:image/jpeg;base64,{{item.picture}}" alt="" class="img-fluid"></div>
                   </div>
-                </div><img src="../assets/img/product1.jpg" alt="" class="img-fluid">
+                </div><img src="data:image/jpeg;base64,{{item.picture}}"  alt="" class="img-fluid">
                 <div class="text">
                   <h3>{{item.productName}}</h3>
                   <p class="price">
                     <del></del>{{item.price|  currency }}
                   </p>
                   <p class="buttons">
-                    <!-- <a [routerLink]="['/Category',item.CategoryId,'Products',item.ProductId]"
-                      class="btn btn-outline-secondary">View detail</a> -->
+                    <a [routerLink]="['/Category', curuntId ,'Products',item.id]"
+                      class="btn btn-outline-secondary">View detail</a>
                   </p>
                 </div>
               </div>
