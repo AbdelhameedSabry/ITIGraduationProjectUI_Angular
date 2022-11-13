@@ -18,7 +18,7 @@
   </div>
 
   <nav class="navbar navbar-expand-lg">
-    <div class="container"><a href="index.html" class="navbar-brand home"><img src="../assets/img/logo.png"
+    <div class="container"><a routerLink="/Home" class="navbar-brand home"><img src="../assets/img/logo.png"
           alt="Obaju logo" class="d-none d-md-inline-block"><img src="../assets/img/logo-small.png" alt="Obaju logo"
           class="d-inline-block d-md-none"><span class="sr-only">Obaju - go to homepage</span></a>
       <div class="navbar-buttons">
@@ -34,7 +34,7 @@
         <ul class="navbar-nav mr-auto">
           <li class="nav-item"><a routerLink="/Home" routerLinkActive="active" class="nav-link">Home</a></li>
 
-          <li class="nav-item"><a routerLink="/AllProducts" routerLinkActive="active" class="nav-link">Products</a>
+          <li class="nav-item"><a [routerLink]="['/Category/2/Products']" routerLinkActive="active" class="nav-link">Products</a>
           </li>
           <li class="nav-item"><a routerLink="/myOrders" routerLinkActive="active" class="nav-link">My Orders</a></li>
         </ul>
