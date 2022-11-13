@@ -16,7 +16,6 @@ export class AllproductComponent implements OnInit {
   categories: Category[]
   productContainer: Product[]
   curuntId: number = 0
-  cartProducts: Product[] = []
 
   constructor(
     private productService: ProductService,
@@ -36,13 +35,5 @@ export class AllproductComponent implements OnInit {
 
   changedata(catid: number) {
     this.productContainer = this.productService.GetAllProductsByCatId(catid);
-  }
-
-  addToCard(product: Product) {
-    if ("cart" in localStorage) {
-      this.cartProducts = JSON.parse(localStorage.getItem('cart')!);
-    }
-    this.cartProducts.push(product)
-    localStorage.setItem('card', JSON.stringify(this.cartProducts))
   }
 }

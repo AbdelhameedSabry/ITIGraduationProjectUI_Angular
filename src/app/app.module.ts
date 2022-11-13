@@ -7,7 +7,6 @@ import { MainLayoutModule } from './MainLayout/main-layout.module';
 import { ProductModule } from './product/product.module';
 import { SharedModule } from './shared/shared.module';
 
-
 @NgModule({
   declarations: [
     AppComponent,

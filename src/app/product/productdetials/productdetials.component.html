@@ -1,6 +1,10 @@
 <div id="all">
   <div id="content">
     <div class="container">
+
+
+     <div #snack></div>
+
       <div class="row">
         <div class="col-lg-12">
           <!-- breadcrumb-->
@@ -58,30 +62,32 @@
                 <h3 class="text-center">{{product.Name}}</h3>
                 <p class="goToDescription">{{product.Description}}</p>
                 <p for="color" class="h4  d-inline-block m-3">Color</p>
-                <select class="form-select col-5" aria-label="Default select example" id="color">
+                <select class="form-select col-5" [(ngModel)]="cardDetails.color" aria-label="Default select example"
+                  id="color">
                   <option selected>Choise Color</option>
-                  <option value="1">White</option>
-                  <option value="2">Black</option>
-                  <option value="3">Blue</option>
+                  <option value="White">White</option>
+                  <option value="Black">Black</option>
+                  <option value="Blue">Blue</option>
                 </select><br>
 
                 <p for="color" class="h4 d-inline-block m-3">Size </p>
-                <select class="form-select col-5" aria-label="Default select example" id="color">
+                <select class="form-select col-5" [(ngModel)]="cardDetails.size" aria-label="Default select example"
+                  id="color">
                   <option selected>Choise Size</option>
-                  <option value="1">Small</option>
-                  <option value="2">Medium</option>
-                  <option value="3">Large</option>
+                  <option value="Small">Small</option>
+                  <option value="Medium">Medium</option>
+                  <option value="Large">Large</option>
                 </select>
 
                 <div class="mb-3">
                   <p for="qty" class="form-label h4 d-inline-block m-3">Quantity</p>
-                  <input type="text" class="form-control d-inline col-3" name="qty" id="" aria-describedby="helpId"
-                    placeholder="">
+                  <input type="text" class="form-control d-inline col-3" name="quantity" value="1"
+                    [(ngModel)]="cardDetails.Count" id="" aria-describedby="helpId" placeholder="">
                 </div>
 
                 <p class="h4 mx-3">Price: <label class="text-danger">${{product.Price}}</label> </p>
-                <p class="text-center buttons"><a href="basket.html" class="btn btn-primary"><i
-                      class="fa fa-shopping-cart"></i> Add to cart</a></p>
+                <p class="text-center buttons"><button (click)="AddCard(product)" class="btn btn-primary"><i
+                      class="fa fa-shopping-cart"></i> Add to cart</button></p>
               </div>
               <div data-slider-id="1" class="owl-thumbs">
                 <button class="owl-thumb-item"><img src="../assets/img/detailsquare.jpg" alt=""
