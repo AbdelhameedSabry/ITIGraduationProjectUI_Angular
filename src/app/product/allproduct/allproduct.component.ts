@@ -18,6 +18,7 @@ export class AllproductComponent implements OnInit {
   productContainer: Product[]
   curuntId: number = 0
   showCategory!: CategoryWithProducts
+  flage:boolean=false
 
   constructor(
     private productService: ProductService,
@@ -38,13 +39,16 @@ export class AllproductComponent implements OnInit {
     this.categoryservice.getCategoryById(this.curuntId).subscribe(cat => {
       this.showCategory = cat;
       this.productContainer = this.showCategory.products;
+      this.flage=true
     })
   }
 
   changedata(catid: number) {
+    this.flage=false
     this.categoryservice.getCategoryById(catid).subscribe(cat => {
       this.showCategory = cat;
       this.productContainer = this.showCategory.products;
+      this.flage=true
       this.curuntId = Number(this.activeRouter.snapshot.paramMap.get("Cid"))
     })
   }

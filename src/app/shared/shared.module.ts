@@ -6,7 +6,6 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { AppRoutingModule } from '../app-routing.module';
 import { NotfoundComponent } from './notfound/notfound.component';
 
-
 @NgModule({
   declarations: [
     HeaderComponent,
@@ -21,7 +20,7 @@ import { NotfoundComponent } from './notfound/notfound.component';
   exports: [
     HeaderComponent,
     FooterComponent,
-    SidebarComponent
+    SidebarComponent,
   ]
 })
 export class SharedModule { }

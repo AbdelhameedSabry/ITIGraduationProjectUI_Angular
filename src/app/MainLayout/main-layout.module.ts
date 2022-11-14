@@ -5,6 +5,7 @@ import { OurcategoriesComponent } from './ourcategories/ourcategories.component'
 import { AboutusComponent } from './aboutus/aboutus.component';
 import { AppRoutingModule } from '../app-routing.module';
 import { FormsModule } from '@angular/forms';
+import { SharedModule } from '../shared/shared.module';
 
 
 
@@ -18,9 +19,7 @@ import { FormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     AppRoutingModule,
-    FormsModule
-    
-        
+    FormsModule,
   ],
 
   exports: [
