@@ -8,18 +8,18 @@ import { Product } from '../_models/product';
 })
 export class CardService {
   Card!: CardHeader
-  cardDetials!:CardDetails
-  
+  cardDetials!: CardDetails
+
   constructor() { }
 
-  newCardDetials(producs:Product){
-   
+  newCardDetials(producs: Product) {
+
   }
 
   AddCard(carddetails: CardDetails[]) {
     this.Card.CustomerId = 1
     for (let i = 0; i < carddetails.length; i++) {
-      this.Card.totalPrice += carddetails[i].totalPrice
+      this.Card.totalPrice += carddetails[i].total
     }
     this.Card.allCardDetails = carddetails
   }
