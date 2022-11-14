@@ -4,7 +4,6 @@ import { AllproductComponent } from './allproduct/allproduct.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProductRoutingModule } from '../product/product-routing.module';
 import { ProductdetialsComponent } from './productdetials/productdetials.component';
-import { SharedModule } from '../shared/shared.module';
 import { SpinnerComponent } from './spinner/spinner.component';
 
 @NgModule({
@@ -17,7 +16,7 @@ import { SpinnerComponent } from './spinner/spinner.component';
     CommonModule,
     FormsModule,
     ProductRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   exports: [
     AllproductComponent,
