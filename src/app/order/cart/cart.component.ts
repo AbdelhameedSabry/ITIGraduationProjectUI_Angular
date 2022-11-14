@@ -17,7 +17,7 @@ i:number=0
   ngOnInit(): void {
     this.MyCardItems=JSON.parse(localStorage.getItem('card')!)
     for( this.i=0;this.i< this.MyCardItems.length; this.i++){
-      this.totalCardPrice +=this.MyCardItems[this.i].totalPrice
+      this.totalCardPrice +=this.MyCardItems[this.i].total
     }
   }
 

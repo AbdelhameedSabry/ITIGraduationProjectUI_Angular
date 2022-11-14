@@ -1,11 +1,11 @@
 export class CardDetails {
-    constructor(
-        public Id: number,
+    constructor(public productId: number,
+        public headerId: number,
         public Name: string,
-        public image:string,
-        public color:string,
-        public size:string,
-        public Price: number,
-        public Count: number,
-        public totalPrice: number) { }
+        public image: ArrayBuffer,
+        public colorId: number,
+        public sizeId: number,
+        public price: number,
+        public amount: number,
+        public total: number) { }
 }

@@ -15,7 +15,7 @@ const routes: Routes = [
   { path: 'AllProducts', component: AllproductComponent },
   { path: 'Category', loadChildren: () => import('./product/product.module').then(m => m.ProductModule) },
   { path: 'myOrders', loadChildren: () => import('./order/order.module').then(m => m.OrderModule) },
-  { path: 'myCart', component: CartComponent },
+  { path: 'myCard', component: CartComponent },
   { path: '**', component: NotfoundComponent },
 ];
 

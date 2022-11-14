@@ -30,14 +30,14 @@
                   </thead>
                   <tbody>
                     <tr *ngFor="let item of MyCardItems">
-                      <td><a href="#"><img src="../assets/img/detailsquare.jpg" alt="White Blouse Armani"></a></td>
+                      <td><a href="#"><img src="data:image/jpeg;base64,{{item.image}}" alt="White Blouse Armani"></a></td>
                       <td><a href="#">{{item.Name}}</a></td>
                       <td>
-                        <input type="number" [value]="item.Count" class="form-control">
+                        <input type="number" [value]="item.amount" class="form-control">
                       </td>
-                      <td>{{item.Price  | currency}}</td>
+                      <td>{{item.price  | currency}}</td>
                       <td>$10.00</td>
-                      <td>{{item.totalPrice+10 | currency}}</td>
+                      <td>{{item.total+10 | currency}}</td>
                       <td><a href="#"><i class="fa fa-trash-o"></i></a></td>
                     </tr>
                   </tbody>
@@ -51,7 +51,7 @@
               </div>
               <!-- /.table-responsive-->
               <div class="box-footer d-flex justify-content-between flex-column flex-lg-row">
-                <div class="left"><a href="category.html" class="btn btn-outline-secondary"><i
+                <div class="left"><a href="category.html" class="btn btn-outline-secondary mb-3"><i
                       class="fa fa-chevron-left"></i> Continue shopping</a></div>
                 <div class="right">
                   <button class="btn btn-outline-secondary"><i class="fa fa-refresh"></i> Update cart</button>

@@ -1,9 +1,13 @@
-<div id="all">
+<app-spinner *ngIf="flage==false"></app-spinner>
+<div id="all" *ngIf="flage==true">
   <div id="content">
     <div class="container">
       <div class="row">
-      <div class="col-lg-12">
+        <div class="col-lg-12  position-relative">
           <!-- breadcrumb-->
+          <div #snack class="snack">
+            <p> Products Added To Card</p>
+          </div>
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
@@ -11,13 +15,8 @@
               <li class="breadcrumb-item"><a href="#">Tops</a></li>
               <li aria-current="page" class="breadcrumb-item active">White Blouse Armani</li>
             </ol>
-          </nav> 
-          <div #snack class="snack">
-            <p> Products Added To Card</p>
-          </div>
+          </nav>
         </div>
-       
-
         <div class="col-lg-3 order-2 order-lg-1">
           <!--
           *** MENUS AND FILTERS ***
@@ -38,7 +37,7 @@
           </div>
 
           <!-- *** MENUS AND FILTERS END ***-->
-        </div> 
+        </div>
         <div class="col-lg-9 order-1 order-lg-2">
           <div id="productMain" class="row">
             <div class="col-md-6">
@@ -58,46 +57,50 @@
               </div>
               <!-- /.ribbon-->
             </div>
+
             <div class="col-md-6">
-              <div class="box">
-                <h3 class="text-center">{{product.productName}}</h3>
-                <p class="goToDescription">{{product.description}}</p>
-                <p for="color" class="h4  d-inline-block m-3">Color</p>
-                <select class="form-select col-5" [(ngModel)]="cardDetails.color" aria-label="Default select example"
-                  id="color">
-                  <option selected>Choise Color</option>
-                  <option value="White">White</option>
-                  <option value="Black">Black</option>
-                  <option value="Blue">Blue</option>
-                </select><br>
+              <form [formGroup]="form">
+                <div class="box">
+                  <h3 class="text-center">{{product.productName}}</h3>
+                  <p class="goToDescription">{{product.description}}</p>
+                  <p for="color" class="h4  d-inline-block m-3">Color</p>
+                  <select class="form-select col-5" formControlName="colorId" aria-label="Default select example"
+                    id="color">
+                    <option value=0 selected>Choise Color</option>
+                    <option value=1>White</option>
+                    <option value=2>Black</option>
+                    <option value=3>Blue</option>
+                  </select><br>
 
-                <p for="color" class="h4 d-inline-block m-3">Size </p>
-                <select class="form-select col-5" [(ngModel)]="cardDetails.size" aria-label="Default select example"
-                  id="color">
-                  <option selected>Choise Size</option>
-                  <option value="Small">Small</option>
-                  <option value="Medium">Medium</option>
-                  <option value="Large">Large</option>
-                </select>
+                  <p for="color" class="h4 d-inline-block m-3">Size </p>
+                  <select class="form-select col-5" formControlName="sizeId" aria-label="Default select example"
+                    id="color">
+                    <option value=0 selected>Choise Size</option>
+                    <option value=1>Small</option>
+                    <option value=2>Medium</option>
+                    <option value=3>Large</option>
+                  </select>
 
-                <div class="mb-3">
-                  <p for="qty" class="form-label h4 d-inline-block m-3">Quantity</p>
-                  <input type="text" class="form-control d-inline col-3" name="quantity" value="1"
-                    [(ngModel)]="cardDetails.Count" id="" aria-describedby="helpId" placeholder="">
+                  <div class="mb-3">
+                    <p for="qty" class="form-label h4 d-inline-block m-3">Quantity</p>
+                    <input type="text" class="form-control d-inline col-3" name="quantity" value="1"
+                      formControlName="amount" id="" aria-describedby="helpId" placeholder="">
+                  </div>
+
+                  <p class="h4 mx-3">Price: <label class="text-danger">${{product.price}}</label> </p>
+                  <p class="text-center buttons"><button [disabled]="!form.valid" (click)="AddToCard()"
+                      class="btn btn-primary"><i class="fa fa-shopping-cart"></i> Add to cart</button></p>
                 </div>
+                <div data-slider-id="1" class="owl-thumbs">
+                  <button class="owl-thumb-item"><img src="data:image/jpeg;base64,{{product.picture}}" alt=""
+                      class="img-fluid"></button>
+                  <button class="owl-thumb-item"><img src="data:image/jpeg;base64,{{product.picture}}" alt=""
+                      class="img-fluid"></button>
+                  <button class="owl-thumb-item"><img src="data:image/jpeg;base64,{{product.picture}}" alt=""
+                      class="img-fluid"></button>
+                </div>
+              </form>
 
-                <p class="h4 mx-3">Price: <label class="text-danger">${{product.price}}</label> </p>
-                <p class="text-center buttons"><button (click)="AddCard(product)" class="btn btn-primary"><i
-                      class="fa fa-shopping-cart"></i> Add to cart</button></p>
-              </div>
-              <div data-slider-id="1" class="owl-thumbs">
-                <button class="owl-thumb-item"><img src="data:image/jpeg;base64,{{product.picture}}" alt=""
-                    class="img-fluid"></button>
-                <button class="owl-thumb-item"><img src="data:image/jpeg;base64,{{product.picture}}" alt=""
-                    class="img-fluid"></button>
-                <button class="owl-thumb-item"><img src="data:image/jpeg;base64,{{product.picture}}" alt=""
-                    class="img-fluid"></button>
-              </div>
             </div>
           </div>
         </div>
