@@ -8,12 +8,12 @@ import { Product } from '../_models/product';
 })
 export class CardService {
   Card!: CardHeader
-  cardDetials!:CardDetails
-  
+  cardDetials!: CardDetails
+
   constructor() { }
 
-  newCardDetials(producs:Product){
-   
+  newCardDetials(producs: Product) {
+
   }
 
   AddCard(carddetails: CardDetails[]) {

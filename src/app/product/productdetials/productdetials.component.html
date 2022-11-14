@@ -63,8 +63,8 @@
                 <div class="box">
                   <h3 class="text-center">{{product.productName}}</h3>
                   <p class="goToDescription">{{product.description}}</p>
-                  <p for="color" class="h4  d-inline-block m-3">Color</p>
-                  <select class="form-select col-5" formControlName="colorId" aria-label="Default select example"
+                  <p for="color" class="h4  d-inline-block">Color</p>
+                  <select class="form-control l-5" formControlName="colorId" aria-label="Default select example"
                     id="color">
                     <option value=0 selected>Choise Color</option>
                     <option value=1>White</option>
@@ -72,9 +72,8 @@
                     <option value=3>Blue</option>
                   </select><br>
 
-                  <p for="color" class="h4 d-inline-block m-3">Size </p>
-                  <select class="form-select col-5" formControlName="sizeId" aria-label="Default select example"
-                    id="color">
+                  <p for="color" class="h4 d-inline-block">Size </p>
+                  <select class="form-control" formControlName="sizeId" aria-label="Default select example" id="color">
                     <option value=0 selected>Choise Size</option>
                     <option value=1>Small</option>
                     <option value=2>Medium</option>
@@ -82,9 +81,9 @@
                   </select>
 
                   <div class="mb-3">
-                    <p for="qty" class="form-label h4 d-inline-block m-3">Quantity</p>
-                    <input type="text" class="form-control d-inline col-3" name="quantity" value="1"
-                      formControlName="amount" id="" aria-describedby="helpId" placeholder="">
+                    <p for="qty" class="form-label h4 d-inline-block mt-3">Quantity</p>
+                    <input type="text" class="form-control d-inline" name="quantity" value="1" formControlName="amount"
+                      id="" aria-describedby="helpId" placeholder="">
                   </div>
 
                   <p class="h4 mx-3">Price: <label class="text-danger">${{product.price}}</label> </p>
