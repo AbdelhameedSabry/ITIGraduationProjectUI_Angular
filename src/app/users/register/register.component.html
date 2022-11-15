@@ -1,3 +1,33 @@
+<!--Modal: modalRelatedContent-->
+<div class="modal fade right" id="modalRelatedContent" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true" data-backdrop="false">
+  <div class="modal-dialog modal-side modal-bottom-right modal-notify modal-info" role="document">
+    <!--Content-->
+    <div class="modal-content">
+      <!--Header-->
+      <div class="modal-header bg-primary">
+        <p class="heading">Register Success</p>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" class="white-text">&times;</span>
+        </button>
+      </div>
+      <!--Body-->
+      <div class="modal-body">
+        <div class="row d-flex justify-content-center align-items-center">
+          <div class="col-6">
+            <a routerLink="/Login" routerLinkActive="router-link-active" class="btn btn-success btn-md">Login Now</a>
+          </div>
+          <div class="col-6">
+            <a routerLink="/Category/2/Products" routerLinkActive="router-link-active" class="btn btn-info btn-md">Go
+              to Shopping</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--/.Content-->
+  </div>
+</div>
+<!--Modal: modalRelatedContent-->
 <div id="all">
   <div id="content">
     <div class="container">
@@ -8,11 +38,12 @@
             <hr>
             <div *ngIf="RegisterForm.invalid && (RegisterForm.dirty || RegisterForm.touched)"
               class="alert alert-danger">
-            <div *ngIf="RegisterForm.errors?.['minLength']">
-              Name is required.
-            </div></div>    
+              <div *ngIf="RegisterForm.errors?.['minLength']">
+                Name is required.
+              </div>
+            </div>
             <form action="customer-orders.html" method="post" [formGroup]="RegisterForm" (ngSubmit)="onSubmit()">
-              <div class="form-group" >
+              <div class="form-group">
                 <label for="name">User Name</label>
                 <input id="name" type="text" class="form-control" formControlName="userName">
               </div>
@@ -33,7 +64,8 @@
                 <input id="Address" name="Address" type="text" class="form-control" formControlName="address">
               </div>
               <div class="text-center">
-                <button type="submit" class="btn btn-primary" [disabled]="!RegisterForm.valid" ><i class="fa fa-user-md"></i> Register</button>
+                <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#modalRelatedContent"
+                  [disabled]="!RegisterForm.valid"><i class="fa fa-user-md"></i> Register</button>
                 <button type="submit" class="btn btn-link"><i class="fa fa-user-md"></i> Login</button>
               </div>
             </form>
