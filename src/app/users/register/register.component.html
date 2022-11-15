@@ -1,6 +1,6 @@
 <!--Modal: modalRelatedContent-->
-<div class="modal fade right" id="modalRelatedContent" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-  aria-hidden="true" data-backdrop="false">
+<div class="modal fade right" *ngIf="regflag==true" id="modalRelatedContent" tabindex="-1" role="dialog"
+  aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="false">
   <div class="modal-dialog modal-side modal-bottom-right modal-notify modal-info" role="document">
     <!--Content-->
     <div class="modal-content">
@@ -12,14 +12,15 @@
         </button>
       </div>
       <!--Body-->
-      <div class="modal-body">
-        <div class="row d-flex justify-content-center align-items-center">
+      <div class="modal-body d-flex justify-content-center">
+        <div class="row">
           <div class="col-6">
-            <a routerLink="/Login" routerLinkActive="router-link-active" class="btn btn-success btn-md">Login Now</a>
+            <button (click)="redirecttologin()" routerLink="/Login" class="btn btn-success">Login
+              Now</button>
           </div>
           <div class="col-6">
-            <a routerLink="/Category/2/Products" routerLinkActive="router-link-active" class="btn btn-info btn-md">Go
-              to Shopping</a>
+            <button (click)="redirecttolproducts()" routerLink="/Category/2/Products" class="btn btn-info"
+              style="width: 120px">Shopping Now</button>
           </div>
         </div>
       </div>
@@ -36,20 +37,14 @@
           <div class="box">
             <h1>New account</h1>
             <hr>
-            <div *ngIf="RegisterForm.invalid && (RegisterForm.dirty || RegisterForm.touched)"
-              class="alert alert-danger">
-              <div *ngIf="RegisterForm.errors?.['minLength']">
-                Name is required.
-              </div>
-            </div>
-            <form action="customer-orders.html" method="post" [formGroup]="RegisterForm" (ngSubmit)="onSubmit()">
+            <form action="customer-orders.html" method="post" [formGroup]="RegisterForm" (ngSubmit)="Register()">
               <div class="form-group">
                 <label for="name">User Name</label>
-                <input id="name" type="text" class="form-control" formControlName="userName">
+                <input (input)="changeflag()" id="name" type="text" class="form-control" formControlName="userName">
               </div>
               <div class="form-group">
                 <label for="email">Email</label>
-                <input id="email" type="text" class="form-control" formControlName="email">
+                <input (input)="changeflag()" id="email" type="text" class="form-control" formControlName="email">
               </div>
               <div class="form-group">
                 <label for="password">Password</label>
@@ -64,6 +59,11 @@
                 <input id="Address" name="Address" type="text" class="form-control" formControlName="address">
               </div>
               <div class="text-center">
+
+                <div class="alert alert-danger" role="alert" *ngIf="errflag==true">
+                  Username or Email already Used
+                </div>
+                <!-- submit button -->
                 <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#modalRelatedContent"
                   [disabled]="!RegisterForm.valid"><i class="fa fa-user-md"></i> Register</button>
                 <button type="submit" class="btn btn-link"><i class="fa fa-user-md"></i> Login</button>
