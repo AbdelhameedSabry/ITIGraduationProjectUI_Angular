@@ -1,5 +1,6 @@
 export class CardDetails {
-    constructor(public productId: number,
+    constructor(
+        public productId: number,
         public headerId: number,
         public Name: string,
         public image: ArrayBuffer,

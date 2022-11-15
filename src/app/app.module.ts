@@ -5,9 +5,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MainLayoutModule } from './MainLayout/main-layout.module';
+import { OrderModule } from './order/order.module';
 import { ProductModule } from './product/product.module';
 import { SharedModule } from './shared/shared.module';
 import { UsersModule } from './users/users.module';
+import { AuthInterceptorProvider } from './_interceptor/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -22,9 +24,10 @@ import { UsersModule } from './users/users.module';
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
-    UsersModule
+    UsersModule,
+    OrderModule
   ],
-  providers: [],
+  providers: [AuthInterceptorProvider],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

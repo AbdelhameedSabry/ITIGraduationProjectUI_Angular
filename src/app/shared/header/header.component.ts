@@ -2,6 +2,7 @@ import { AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit,
 import { Router } from '@angular/router';
 import { CategoryService } from 'src/app/_services/category.service';
 import { Category } from 'src/app/_models/category';
+import { Cookies } from 'typescript-cookie';
 
 @Component({
   selector: 'app-header',
@@ -11,10 +12,13 @@ import { Category } from 'src/app/_models/category';
 export class HeaderComponent implements OnInit, AfterViewChecked {
   cats: Category[] = []
   len: number = 0
+  username:any
   constructor(
     private categoryservices: CategoryService,
     private router: Router,
-    private cdr: ChangeDetectorRef) { }
+    private cdr: ChangeDetectorRef) { 
+      this.username = Cookies.get('username')
+    }
 
 
   ngOnInit(): void {
@@ -22,6 +26,9 @@ export class HeaderComponent implements OnInit, AfterViewChecked {
       for (let i = 1; i <= JSON.parse(localStorage.getItem('card')!).length; i++) {
         this.len = i
       }
+    }
+    if(Cookies.get('username')){
+      this.username = Cookies.get('username')
     }
   }
 
@@ -33,5 +40,14 @@ export class HeaderComponent implements OnInit, AfterViewChecked {
     }
     this.cdr.detectChanges();
 
+  }
+
+  Logout(){
+    if(Cookies.get('token')){
+      Cookies.remove('token')
+    }
+    if(Cookies.get('username')){
+      Cookies.remove('username')
+    }
   }
 }

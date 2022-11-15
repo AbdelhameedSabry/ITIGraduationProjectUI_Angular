@@ -15,7 +15,7 @@
       <div id="navigation" class="collapse navbar-collapse">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item"><a routerLink="/Home" routerLinkActive="active" class="nav-link">Home</a></li>
-          <li class="nav-item"><a [routerLink]="['/Category/2/Products']" routerLinkActive="active"
+          <li class="nav-item"><a [routerLink]="['/Category/1/Products']" routerLinkActive="active"
               class="nav-link">Products</a>
           </li>
           <li class="nav-item"><a routerLink="/myOrders" routerLinkActive="active" class="nav-link">My Orders</a></li>
@@ -38,9 +38,11 @@
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle d-flex align-items-center" id="navbarDropdownMenuLink"
             role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+            <span class="mx-3">{{ username }}</span>
             <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img (31).webp" class="rounded-circle" height="22"
               alt="Avatar" loading="lazy" />
           </a>
+          
           <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
             <li>
               <a class="dropdown-item" routerLink="/Login" data-toggle="modal" data-target="#login-modal">Login</a>
@@ -55,7 +57,7 @@
               <a class="dropdown-item" href="#">Settings</a>
             </li>
             <li>
-              <a class="dropdown-item" href="#">Logout</a>
+              <a class="dropdown-item" (click)="Logout()">Logout</a>
             </li>
           </ul>
         </li>

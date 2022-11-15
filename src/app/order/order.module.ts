@@ -5,6 +5,7 @@ import { OrderRoutingModule } from './order-routing.module';
 import { OrderComponent } from './order.component';
 import { CartComponent } from './cart/cart.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AuthInterceptorProvider } from '../_interceptor/auth.interceptor';
 
 
 
@@ -18,6 +19,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     OrderRoutingModule,
     FormsModule,
     ReactiveFormsModule
-  ]
+  ],
+  providers:[AuthInterceptorProvider]
 })
 export class OrderModule { }

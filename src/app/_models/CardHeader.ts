@@ -2,9 +2,11 @@ import { CardDetails } from "./CardDetails";
 
 export class CardHeader{
     constructor(
-        public Id:number,
-        public CustomerId:number,
-        public totalPrice:number,
-        public allCardDetails:CardDetails[]
+        public id:number,
+        public date:Date,
+        public userid:number,
+        public total:number,
+        public notes:string,
+        public cardproducts:CardDetails[]
     ){}
 }
