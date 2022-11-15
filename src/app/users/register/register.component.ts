@@ -39,14 +39,13 @@ export class RegisterComponent implements OnInit {
       )
       .subscribe({
         next: (response) => {
-          this.errflag=false
+          this.errflag = false
           this.regflag = true
           console.log(this.regflag)
         },
         error: (error) => {
-          this.regflag=false
-          if (error.status == 400)
-            this.errflag = true
+          this.regflag = false
+          this.errflag = true
         },
         complete: () => {
           this.regflag = true
