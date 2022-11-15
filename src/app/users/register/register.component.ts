@@ -39,9 +39,12 @@ export class RegisterComponent implements OnInit {
       )
       .subscribe({
         next: (response) => {
-          console.log(response)
+          this.errflag=false
+          this.regflag = true
+          console.log(this.regflag)
         },
         error: (error) => {
+          this.regflag=false
           if (error.status == 400)
             this.errflag = true
         },
@@ -59,7 +62,7 @@ export class RegisterComponent implements OnInit {
     this.route.navigateByUrl('/Category/2/Products')
   }
 
-  changeflag(){
-    this.errflag=false
+  changeflag() {
+    this.errflag = false
   }
 }

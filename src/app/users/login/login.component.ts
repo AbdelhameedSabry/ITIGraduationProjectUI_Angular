@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { catchError, throwError } from 'rxjs';
 import { UsersService } from 'src/app/_services/users.service';
+import { environment } from 'src/environments/environment';
 import { setCookie, getCookie } from 'typescript-cookie';
 
 @Component({
@@ -28,6 +29,7 @@ export class LoginComponent implements OnInit {
   login() {
     this.usersSer.login(this.form.value)
       .pipe(
+       
         catchError((error) => {
           return throwError(() => error)
         })
