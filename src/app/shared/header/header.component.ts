@@ -1,8 +1,7 @@
-import { AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit, ChangeDetectorRef, Component, ElementRef, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
+import { AfterViewChecked, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { CategoryService } from 'src/app/_services/category.service';
 import { Category } from 'src/app/_models/category';
-import { Cookies } from 'typescript-cookie';
+import { AuthService } from 'src/app/_services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -12,26 +11,24 @@ import { Cookies } from 'typescript-cookie';
 export class HeaderComponent implements OnInit, AfterViewChecked {
   cats: Category[] = []
   len: number = 0
-  username:any
-  constructor(
-    private categoryservices: CategoryService,
-    private router: Router,
-    private cdr: ChangeDetectorRef) { 
-      this.username = Cookies.get('username')
-    }
+  username: string = ""
 
+  constructor(
+    private router: Router,
+    private cdr: ChangeDetectorRef,
+    private auth: AuthService) {
+  }
 
   ngOnInit(): void {
+    this.auth.UserName$.subscribe(res => {
+      this.username = res
+    })
     if (localStorage.getItem('card') != null) {
       for (let i = 1; i <= JSON.parse(localStorage.getItem('card')!).length; i++) {
         this.len = i
       }
     }
-    if(Cookies.get('username')){
-      this.username = Cookies.get('username')
-    }
   }
-
   ngAfterViewChecked(): void {
     if (localStorage.getItem('card') != null) {
       for (let i = 1; i <= JSON.parse(localStorage.getItem('card')!).length; i++) {
@@ -39,15 +36,25 @@ export class HeaderComponent implements OnInit, AfterViewChecked {
       }
     }
     this.cdr.detectChanges();
-
+    this.auth.UserName$.subscribe(res => {
+      this.username = res
+    })
   }
 
-  Logout(){
-    if(Cookies.get('token')){
-      Cookies.remove('token')
-    }
-    if(Cookies.get('username')){
-      Cookies.remove('username')
-    }
+  isLogedIn(): boolean {
+    let isloged: boolean = false
+    this.auth.isLogedIn$.subscribe((res) => {
+      if (res == true)
+        isloged = true
+      else
+        isloged = false
+    })
+    return isloged
+  }
+
+  Logout() {
+    this.auth.logout()
+    this.isLogedIn()
+    this.router.navigateByUrl('/Home')
   }
 }

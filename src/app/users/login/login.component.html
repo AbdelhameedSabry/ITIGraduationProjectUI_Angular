@@ -11,7 +11,7 @@
                 <label for="Username">Username</label>
 
                 <!-- User Name Input -->
-                <input id="Username" type="text" class="form-control" formControlName="username">
+                <input (input)="changeflag()" id="Username" type="text" class="form-control" formControlName="username">
                 <div *ngIf="form.get('username')!.invalid && 
                 form.get('username')!.errors && 
                 (form.get('username')!.dirty || form.get('username')!.touched)">
@@ -24,7 +24,7 @@
                 <label for="password">Password</label>
 
                 <!-- Password Input -->
-                <input id="password" type="password" class="form-control" formControlName="password">
+                <input (input)="changeflag()" id="password" type="password" class="form-control" formControlName="password">
                 <div *ngIf="form.get('username')!.invalid && 
                 form.get('password')!.errors && 
                 (form.get('password')!.dirty || form.get('password')!.touched)">

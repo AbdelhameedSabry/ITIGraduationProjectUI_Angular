@@ -11,6 +11,9 @@ import { JwtHelperService } from '@auth0/angular-jwt'
 export class AuthService {
   private _isLogedIn$ = new BehaviorSubject<boolean>(false)
   isLogedIn$ = this._isLogedIn$.asObservable()
+  private _UserName$ = new BehaviorSubject<string>('')
+  UserName$ = this._UserName$.asObservable()
+
   logedinUserId!: number
   token: string = ""
   helper = new JwtHelperService()
@@ -18,7 +21,7 @@ export class AuthService {
   constructor(private userService: UsersService) {
     const token = Cookies.get('token') as string
     this._isLogedIn$.next(!!token);
-    if ((Cookies.get('token') != null )&&(!!this.isLogedIn$)){
+    if ((Cookies.get('token') != null) && (!!this.isLogedIn$)) {
       this.logedinUserId = this.getUser(token)
       console.log(this.logedinUserId)
     }
@@ -31,10 +34,22 @@ export class AuthService {
         this._isLogedIn$.next(true);
         Cookies.set('token', response.token);
         Cookies.set('username', user.username);
+        this._UserName$.next(String(Cookies.get('username')))
         this.token = response.token
         this.logedinUserId = this.getUser(response.token)
       })
     )
+  }
+
+  logout() {
+    if (Cookies.get('token')) {
+      Cookies.remove('token')
+    }
+    if (Cookies.get('username')) {
+      Cookies.remove('username')
+    }
+    this._UserName$.next('')
+    this._isLogedIn$.next(false);
   }
 
   getUser(token: string) {

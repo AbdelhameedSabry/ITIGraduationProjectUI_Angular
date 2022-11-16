@@ -26,36 +26,23 @@ export class LoginComponent implements OnInit {
 
     })
   }
-
   login() {
-    if(this.form.invalid){
+    if (this.form.invalid) {
       return;
     }
- 
-    
     this.authSer.login(this.form.value)
-    .subscribe((response) => {
-      console.log(response)
-      this.router.navigateByUrl('/Home');
-    })
-    // this.usersSer.login(this.form.value)
-    //   .pipe(
-    //     catchError((error) => {
-    //       return throwError(() => error)
-    //     })
-    //   )
-    //   .subscribe({
-    //     next: (response) => {
-    //       this.token = response;
-    //       setCookie("token", this.token.token);
-    //     },
-    //     error: (error) => {
-    //       if (error.status == 400)
-    //         this.flag = true
-    //     },
-    //     complete: () => {
-    //       this.router.navigateByUrl('/Home')
-    //     }
-    //   })
+      .pipe(
+        catchError((error) => {
+          this.flag = true
+          return throwError(() => error)
+        }))
+      .subscribe(
+        (response) => {
+          console.log(response)
+          this.router.navigateByUrl('/Home');
+        })
+  }
+  changeflag() {
+    this.flag = false
   }
 }
