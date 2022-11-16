@@ -45,7 +45,7 @@
                 <table class="table">
                   <thead>
                     <tr>
-                      <th colspan="2">Product</th>
+                      <th>Product</th>
                       <th>Quantity</th>
                       <th>Unit price</th>
                       <th>Shipping </th>
@@ -53,10 +53,11 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr *ngFor="let item of MyCardItems">
-                      <td><img src="data:image/jpeg;base64,{{item.image}}" alt="White Blouse Armani">
-                      </td>
-                      <td><a [routerLink]="">{{item.Name}}</a></td>
+                    <tr *ngFor="let item of MyCardItems let i = index">
+                      <td>{{ i + 1 }}</td>
+                      <!-- <td><img src="data:image/jpeg;base64,{{item.image}}" alt="White Blouse Armani"> -->
+                      <!-- </td> -->
+                      <!-- <td><a [routerLink]="">{{item.Name}}</a></td> -->
                       <td>
                         <input (input)="updateTotalPrice(item,$event)" min=1 type="number" name="amount"
                           [value]="item.amount" class="form-control">

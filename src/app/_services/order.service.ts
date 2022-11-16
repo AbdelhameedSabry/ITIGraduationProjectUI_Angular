@@ -19,4 +19,8 @@ export class OrderService {
   addOrder(order: CardHeader) {
     return this.http.post(environment.baseUrl + 'ShoppingCardHeader/CheckOut', order)
   }
+
+  getOrderById(id:number){
+    return this.http.get<MyOrders>(environment.baseUrl + 'ShoppingCardHeader/' + id)
+  }
 }

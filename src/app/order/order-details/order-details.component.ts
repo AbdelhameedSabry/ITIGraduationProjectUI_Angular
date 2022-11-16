@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { catchError, throwError } from 'rxjs';
+import { CardDetails } from 'src/app/_models/CardDetails';
 import { MyOrders } from 'src/app/_models/MyOrders';
 import { ShoppingHeader } from 'src/app/_models/ShoppingHeader';
 import { AuthService } from 'src/app/_services/auth.service';
@@ -16,15 +17,16 @@ export class OrderDetailsComponent implements OnInit {
   orderId:number = 0
   MyorderList!: ShoppingHeader
   showOrder!: MyOrders
+  cardDetails:CardDetails[] = []
   constructor(private ar:ActivatedRoute, private orderserice: OrderService, private authService:AuthService, private router:Router) { 
-    this.showOrder = new MyOrders(0,new Date(),0,"");
+    this.showOrder = new MyOrders(0,new Date(),0,"",0,this.cardDetails)
   }
 
   ngOnInit(): void {
     this.ar.params.subscribe(a => {
       this.orderId = a['id']
     })
-    this.orderserice.getUserOrdersById(this.authService.logedinUserId)
+    this.orderserice.getOrderById(this.orderId)
       .pipe(
         catchError((error) => {
           return throwError(() => error)
@@ -32,13 +34,7 @@ export class OrderDetailsComponent implements OnInit {
       )
       .subscribe({
         next: (response) => {
-          this.MyorderList = response
-          for (let i = 0; i < this.MyorderList?.shoppingcardheader.length; i++) {
-            if(this.MyorderList.shoppingcardheader[i].id == this.orderId){
-              this.showOrder = this.MyorderList.shoppingcardheader[i]
-              console.log(this.showOrder)
-            }
-          }
+          this.showOrder = response
           console.log(response)
         },
         error: (error) => {

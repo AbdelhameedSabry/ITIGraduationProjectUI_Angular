@@ -16,7 +16,7 @@ export class ProductdetialsComponent implements OnInit, AfterViewInit {
   categories: Category[] = []
   product!: Product
   currentproId: number = 0
-  cardDetails: CardDetails = new CardDetails(0, 0, "", new ArrayBuffer(1), 0, 0, 0, 0, 0)
+  cardDetails: CardDetails = new CardDetails(0,0,0,0,0,0,0,0)
   cartProducts: CardDetails[] = []
   @ViewChild('snack') snack!: ElementRef
   isadd: boolean = false
@@ -48,9 +48,7 @@ export class ProductdetialsComponent implements OnInit, AfterViewInit {
 
   AddToCard() {
     this.cardDetails.productId = this.product.id
-    this.cardDetails.Name = this.product.productName
     this.cardDetails.price = this.product.price
-    this.cardDetails.image = this.product.picture
     this.cardDetails.colorId = this.form.value.colorId
     this.cardDetails.sizeId = this.form.value.sizeId
     this.cardDetails.amount = this.form.value.amount

@@ -8,7 +8,7 @@
                 <ol class="breadcrumb">
                   <li class="breadcrumb-item"><a href="#">Home</a></li>
                   <li aria-current="page" class="breadcrumb-item"><a href="#">My orders</a></li>
-                  <li aria-current="page" class="breadcrumb-item active">Order # 1735</li>
+                  <li aria-current="page" class="breadcrumb-item active">Order # {{ showOrder.id }}</li>
                 </ol>
               </nav>
             </div>
@@ -35,55 +35,38 @@
             </div>
             <div id="customer-order" class="col-lg-9">
               <div class="box">
-                <h1>Order #1735</h1>
-                <p class="lead">Order #{{ showOrder.id }} was placed on <strong>{{ showOrder.date | date:'shortDate' }}</strong> and is currently <strong>Status</strong>.</p>
-                <p class="text-muted">If you have any questions, please feel free to <a href="contact.html">contact us</a>, our customer service center is working for you 24/7.</p>
+                <h1>Order # {{ showOrder.id }}</h1>
+                <p class="lead">Order # {{ showOrder.id }} was placed on <strong>{{ showOrder.date | date:'shortDate' }}</strong> and is currently <strong>Runing</strong>.</p>
+                <p class="text-muted">If you have any questions, please feel free to <a>contact us</a>, our customer service center is working for you 24/7.</p>
                 <hr>
                 <div class="table-responsive mb-4">
                   <table class="table">
                     <thead>
                       <tr>
-                        <th colspan="2">Product</th>
+                        <th>Product</th>
                         <th>Quantity</th>
                         <th>Unit price</th>
-                        <th>Discount</th>
+                        <th>Tax</th>
                         <th>Total</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td><a href="#"><img src="../../../assets/img/detailsquare.jpg" alt="White Blouse Armani"></a></td>
-                        <td><a href="#">White Blouse Armani</a></td>
-                        <td>2</td>
-                        <td>$123.00</td>
-                        <td>$0.00</td>
-                        <td>$246.00</td>
-                      </tr>
-                      <tr>
-                        <td><a href="#"><img src="../../../assets/img/detailsquare.jpg" alt="Black Blouse Armani"></a></td>
-                        <td><a href="#">Black Blouse Armani</a></td>
-                        <td>1</td>
-                        <td>$200.00</td>
-                        <td>$0.00</td>
-                        <td>$200.00</td>
+                      <tr *ngFor="let item of showOrder.cardproducts let i = index">
+                        <td>{{ i + 1 }}</td>
+                        <!-- <td><a href="#">White Blouse Armani</a></td> -->
+                        <td>{{ item.amount }}</td>
+                        <td>{{ item.price | currency }}</td>
+                        <td>$ 10</td>
+                        <td>{{ item.total | currency}}</td>
                       </tr>
                     </tbody>
                     <tfoot>
-                      <tr>
-                        <th colspan="5" class="text-right">Order subtotal</th>
-                        <th>$446.00</th>
-                      </tr>
-                      <tr>
-                        <th colspan="5" class="text-right">Shipping and handling</th>
-                        <th>$10.00</th>
-                      </tr>
-                      <tr>
-                        <th colspan="5" class="text-right">Tax</th>
-                        <th>$0.00</th>
-                      </tr>
+                
+                     
+                     
                       <tr>
                         <th colspan="5" class="text-right">Total</th>
-                        <th>$456.00</th>
+                        <th>{{ showOrder.total | currency }}</th>
                       </tr>
                     </tfoot>
                   </table>
