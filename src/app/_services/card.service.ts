@@ -17,10 +17,10 @@ export class CardService {
   }
 
   AddCard(carddetails: CardDetails[]) {
-    this.Card.CustomerId = 1
+    this.Card.userid = 1
     for (let i = 0; i < carddetails.length; i++) {
-      this.Card.totalPrice += carddetails[i].total
+      this.Card.total += carddetails[i].total
     }
-    this.Card.allCardDetails = carddetails
+    this.Card.cardproducts = carddetails
   }
 }

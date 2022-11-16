@@ -15,10 +15,10 @@ import { OrderService } from 'src/app/_services/order.service';
 export class CartComponent implements OnInit, AfterContentChecked {
 
   MyCardItems: CardDetails[] = []
-  order:CardHeader = new CardHeader(0,new Date(),0,0,"",this.MyCardItems);
+  order: CardHeader = new CardHeader(0, new Date(), 0, 0, "", this.MyCardItems);
   totalCardPrice: number = 0
   i: number = 0
-  constructor(private orderService: OrderService, private authService:AuthService, private router:Router) { }
+  constructor(private orderService: OrderService, private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
     this.MyCardItems = JSON.parse(localStorage.getItem('card')!)
@@ -45,8 +45,9 @@ export class CartComponent implements OnInit, AfterContentChecked {
     }
   }
 
-  checkout(){
+  checkout() {
     console.log('chekedout')
+    console.log(this.authService.token)
     this.order.id = 0;
     this.order.userid = this.authService.logedinUserId;
     this.order.cardproducts = this.MyCardItems;
@@ -55,25 +56,25 @@ export class CartComponent implements OnInit, AfterContentChecked {
     this.order.date = new Date();
     console.log(this.order)
     this.orderService.addOrder(this.order)
-    .pipe(
-      catchError((error) => {
-        return throwError(() => error)
+      .pipe(
+        catchError((error) => {
+          return throwError(() => error)
+        })
+      )
+      .subscribe({
+        next: (response) => {
+          console.log(response);
+        },
+        error: (error) => {
+          alert('error')
+        },
+        complete: () => {
+          localStorage.removeItem('card')
+          this.MyCardItems = []
+          this.totalCardPrice = 0
+          this.router.navigateByUrl('/myOrders')
+        }
       })
-    )
-    .subscribe({
-      next: (response) => {
-        console.log(response);
-      },
-      error: (error) => {
-        alert('error')
-      },
-      complete: () => {
-        localStorage.removeItem('card')
-        this.MyCardItems = []
-        this.totalCardPrice = 0
-        this.router.navigateByUrl('/myOrders')
-      }
-    })
   }
 
 }

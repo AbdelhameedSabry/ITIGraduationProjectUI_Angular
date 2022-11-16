@@ -11,10 +11,10 @@ export class OrderService {
   constructor(private http:HttpClient) { }
 
   getUserOrdersById(id:number){
-    return this.http.get<CardHeader>(environment.baseUrl + 'ShoppingCardHeader/' + id);
+    return this.http.get<CardHeader>(environment.baseUrl + 'ShoppingCardHeader' + id);
   }
 
   addOrder(order:CardHeader){
-    return this.http.post(environment.baseUrl + 'ShoppingCardHeader/CheckOut/', order)
+    return this.http.post(environment.baseUrl + 'ShoppingCardHeader/CheckOut', order)
   }
 }
