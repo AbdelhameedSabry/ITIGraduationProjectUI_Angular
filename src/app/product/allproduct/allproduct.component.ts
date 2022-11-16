@@ -12,9 +12,9 @@ import { CategoryWithProducts } from 'src/app/_models/category-with-products';
   styleUrls: ['./allproduct.component.css']
 })
 
-export class AllproductComponent implements OnInit {
+export class AllproductComponent implements OnInit, AfterContentInit {
 
-  categories: Category[]
+  categories: Category[] 
   productContainer: Product[]
   curuntId: number = 0
   showCategory!: CategoryWithProducts
@@ -35,14 +35,24 @@ export class AllproductComponent implements OnInit {
     console.log(this.curuntId);
     this.categoryservice.getAllCategory().subscribe(cats => {
       this.categories = cats;
-    })
+    }) 
     this.categoryservice.getCategoryById(this.curuntId).subscribe(cat => {
       this.showCategory = cat;
       this.productContainer = this.showCategory.products;
       this.flage=true
     })
+    
   }
 
+  ngAfterContentInit() {
+    this.flage=false
+    this.categoryservice.getCategoryById(this.curuntId).subscribe(cat => {
+      this.showCategory = cat;
+      this.productContainer = this.showCategory.products;
+      this.flage=true
+      this.curuntId = Number(this.activeRouter.snapshot.paramMap.get("Cid"))
+    })
+  }
   changedata(catid: number) {
     this.flage=false
     this.categoryservice.getCategoryById(catid).subscribe(cat => {

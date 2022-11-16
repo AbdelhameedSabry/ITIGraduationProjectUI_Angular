@@ -49,10 +49,10 @@
               <a class="dropdown-item" *ngIf="!isLogedIn()" routerLink="/Register">Register</a>
             </li>
             <li>
-              <a class="dropdown-item" routerLink="/MyOrders">My profile</a>
+              <a class="dropdown-item disabled" routerLink="/MyOrders">My profile</a>
             </li>
             <li>
-              <a class="dropdown-item" href="#">Settings</a>
+              <a class="dropdown-item disabled" href="#">Settings</a>
             </li>
             <li>
               <a class="dropdown-item" style="cursor: pointer" *ngIf="isLogedIn()" (click)="Logout()">Logout</a>

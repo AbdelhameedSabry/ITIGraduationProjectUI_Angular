@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Category } from 'src/app/_models/category';
+import { CategoryService } from 'src/app/_services/category.service';
 
 @Component({
   selector: 'app-footer',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
 
-  constructor() { }
+  categories:Category[] = []
+  constructor(private categoryservice:CategoryService) { }
 
   ngOnInit(): void {
+    this.categoryservice.getAllCategory().subscribe(cats => {
+      this.categories = cats;
+    })
   }
 
 }

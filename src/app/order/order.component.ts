@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { catchError, throwError } from 'rxjs';
 import { CardHeader } from '../_models/CardHeader';
 import { MyOrders } from '../_models/MyOrders';
@@ -13,7 +14,7 @@ import { OrderService } from '../_services/order.service';
 })
 export class OrderComponent implements OnInit {
   MyorderList!: ShoppingHeader
-  constructor(private orderserice: OrderService, private authservice: AuthService) { 
+  constructor(private orderserice: OrderService, private authservice: AuthService, private router:Router) { 
     //this.MyorderList.shoppingcardheader = new MyOrders[]
   }
 
@@ -37,6 +38,23 @@ export class OrderComponent implements OnInit {
           console.log("salah")
         }
       })
+  }
+
+  Logout() {
+    this.authservice.logout()
+    this.isLogedIn()
+    this.router.navigateByUrl('/Home')
+  }
+
+  isLogedIn(): boolean {
+    let isloged: boolean = false
+    this.authservice.isLogedIn$.subscribe((res) => {
+      if (res == true)
+        isloged = true
+      else
+        isloged = false
+    })
+    return isloged
   }
 
 }

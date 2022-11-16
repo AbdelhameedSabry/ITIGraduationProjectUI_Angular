@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { catchError, throwError } from 'rxjs';
 import { MyOrders } from 'src/app/_models/MyOrders';
 import { ShoppingHeader } from 'src/app/_models/ShoppingHeader';
@@ -16,7 +16,7 @@ export class OrderDetailsComponent implements OnInit {
   orderId:number = 0
   MyorderList!: ShoppingHeader
   showOrder!: MyOrders
-  constructor(private ar:ActivatedRoute, private orderserice: OrderService, private authService:AuthService) { 
+  constructor(private ar:ActivatedRoute, private orderserice: OrderService, private authService:AuthService, private router:Router) { 
     this.showOrder = new MyOrders(0,new Date(),0,"");
   }
 
@@ -49,6 +49,23 @@ export class OrderDetailsComponent implements OnInit {
         }
       })
       
+  }
+
+  isLogedIn(): boolean {
+    let isloged: boolean = false
+    this.authService.isLogedIn$.subscribe((res) => {
+      if (res == true)
+        isloged = true
+      else
+        isloged = false
+    })
+    return isloged
+  }
+
+  Logout() {
+    this.authService.logout()
+    this.isLogedIn()
+    this.router.navigateByUrl('/Home')
   }
 
 }
