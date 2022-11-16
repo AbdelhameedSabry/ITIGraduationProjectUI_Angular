@@ -18,8 +18,11 @@ export class AuthService {
   constructor(private userService: UsersService) {
     const token = Cookies.get('token') as string
     this._isLogedIn$.next(!!token);
-    this.logedinUserId = this.getUser(token)
-    console.log(this.logedinUserId)
+    if ((Cookies.get('token') != null )&&(!!this.isLogedIn$)){
+      this.logedinUserId = this.getUser(token)
+      console.log(this.logedinUserId)
+    }
+
   }
 
   login(user: User) {
@@ -37,6 +40,5 @@ export class AuthService {
   getUser(token: string) {
     const LogedUserId = this.helper.decodeToken(token)
     return Number(LogedUserId['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier'])
-
   }
 }

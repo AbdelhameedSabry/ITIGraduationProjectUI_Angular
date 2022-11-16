@@ -24,7 +24,6 @@ export class OurcategoriesComponent implements OnInit {
   ngOnInit(): void {
     this.catSevice.getAllCategory().subscribe(cats => {
       this.catContainer = cats;
-
       console.log(cats);
     })
   }

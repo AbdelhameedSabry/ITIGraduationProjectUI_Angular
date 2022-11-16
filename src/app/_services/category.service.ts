@@ -9,9 +9,6 @@ import { CategoryWithProducts } from '../_models/category-with-products';
 })
 export class CategoryService {
 
-  categories:Category[]=[];
-
-
   constructor(private http:HttpClient) { }
 
   getAllCategory(){
