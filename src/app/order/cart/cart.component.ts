@@ -18,6 +18,8 @@ export class CartComponent implements OnInit, AfterContentChecked {
   order: CardHeader = new CardHeader(0, new Date(), 0, 0, "", this.MyCardItems);
   totalCardPrice: number = 0
   i: number = 0
+  flag: Boolean = false
+
   constructor(private orderService: OrderService, private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
@@ -30,7 +32,10 @@ export class CartComponent implements OnInit, AfterContentChecked {
 
   updateCard() {
     localStorage.removeItem('card')
-    localStorage.setItem('card', JSON.stringify(this.MyCardItems))
+    if (this.MyCardItems != null) {
+      localStorage.setItem('card', JSON.stringify(this.MyCardItems))
+      this.flag = true
+    }
   }
 
   updateTotalPrice(product: CardDetails, event: any) {
@@ -40,7 +45,7 @@ export class CartComponent implements OnInit, AfterContentChecked {
 
   ngAfterContentChecked(): void {
     this.totalCardPrice = 0
-    if(this.MyCardItems){
+    if (this.MyCardItems) {
       for (this.i = 0; this.i < this.MyCardItems.length; this.i++) {
         this.totalCardPrice += this.MyCardItems[this.i].total
       }
@@ -48,8 +53,6 @@ export class CartComponent implements OnInit, AfterContentChecked {
   }
 
   checkout() {
-    console.log('chekedout')
-    console.log(this.authService.token)
     this.order.id = 0;
     this.order.userid = this.authService.logedinUserId;
     this.order.cardproducts = this.MyCardItems;
@@ -57,26 +60,30 @@ export class CartComponent implements OnInit, AfterContentChecked {
     this.order.total = this.totalCardPrice;
     this.order.date = new Date();
     console.log(this.order)
-    this.orderService.addOrder(this.order)
-      .pipe(
-        catchError((error) => {
-          return throwError(() => error)
+    if (this.MyCardItems != null) {
+      this.orderService.addOrder(this.order)
+        .pipe(
+          catchError((error) => {
+            return throwError(() => error)
+          })
+        )
+        .subscribe({
+          next: (response) => {
+            console.log(response);
+          },
+          error: (error) => {
+            alert('You show Login First')
+          },
+          complete: () => {
+            localStorage.removeItem('card')
+            this.MyCardItems = []
+            this.totalCardPrice = 0
+            this.router.navigateByUrl('/myOrders')
+          }
         })
-      )
-      .subscribe({
-        next: (response) => {
-          console.log(response);
-        },
-        error: (error) => {
-          alert('error')
-        },
-        complete: () => {
-          localStorage.removeItem('card')
-          this.MyCardItems = []
-          this.totalCardPrice = 0
-          this.router.navigateByUrl('/myOrders')
-        }
-      })
+    }
+    else
+      alert("No Items")
   }
 
 }

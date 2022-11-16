@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { catchError, throwError } from 'rxjs';
-import { CardHeader } from '../_models/CardHeader';
-import { MyOrders } from '../_models/MyOrders';
 import { ShoppingHeader } from '../_models/ShoppingHeader';
 import { AuthService } from '../_services/auth.service';
 import { OrderService } from '../_services/order.service';
@@ -14,7 +12,7 @@ import { OrderService } from '../_services/order.service';
 })
 export class OrderComponent implements OnInit {
   MyorderList!: ShoppingHeader
-  constructor(private orderserice: OrderService, private authservice: AuthService, private router:Router) { 
+  constructor(private orderserice: OrderService, private authservice: AuthService, private router: Router) {
     //this.MyorderList.shoppingcardheader = new MyOrders[]
   }
 

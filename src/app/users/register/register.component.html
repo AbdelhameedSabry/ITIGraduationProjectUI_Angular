@@ -83,9 +83,10 @@
                   Username or Email already Used
                 </div>
                 <!-- submit button -->
-                <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#modalRelatedContent"
-                  [disabled]="!RegisterForm.valid"><i class="fa fa-user-md"></i> Register</button>
-                <button type="submit" class="btn btn-link"><i class="fa fa-user-md"></i> Login</button>
+                <button type="submit" class="btn btn-primary" [disabled]="!RegisterForm.valid"><i
+                    class="fa fa-user-md"></i> Register</button>
+                <button routerLink="/Login" type="submit" class="btn btn-link"><i class="fa fa-user-md"></i>
+                  Login</button>
               </div>
             </form>
           </div>

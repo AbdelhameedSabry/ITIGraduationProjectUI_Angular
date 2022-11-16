@@ -58,4 +58,3 @@ export class HeaderComponent implements OnInit, AfterViewChecked {
     this.router.navigateByUrl('/Home')
   }
 }
- 
