@@ -43,14 +43,17 @@
                     <th>Status</th>
                     <th>Action</th>
                   </tr>
-                </thead>
+                </thead> 
                 <tbody>
-                  <tr *ngFor="let item of MyorderList.shoppingcardheader">
-                    <th># 1735</th>
-                    <td>22/06/2013</td>
-                    <td>$ 150.00</td>
-                    <td><span class="badge badge-info">Being prepared</span></td>
-                    <td><a href="customer-order.html" class="btn btn-primary btn-sm">View</a></td>
+                  <!-- <ng-container *ngIf="MyorderList.shoppingcardheader"></ng-container> -->
+                  <tr *ngFor="let item of MyorderList?.shoppingcardheader let i = index">
+                    <th>{{ i + 1 }}</th>
+                    <td>{{ item.date | date:'shortDate' }}</td>
+                    <td>Total</td>
+                    <td><span class="badge badge-info">Status</span></td>
+                    <td>
+                      <a [routerLink]="['/myOrders', 'orderDetails', item.id]" class="btn btn-primary btn-sm">View</a>
+                    </td>
                   </tr>
                 </tbody>
               </table>

@@ -13,7 +13,9 @@ import { OrderService } from '../_services/order.service';
 })
 export class OrderComponent implements OnInit {
   MyorderList!: ShoppingHeader
-  constructor(private orderserice: OrderService, private authservice: AuthService) { }
+  constructor(private orderserice: OrderService, private authservice: AuthService) { 
+    //this.MyorderList.shoppingcardheader = new MyOrders[]
+  }
 
   ngOnInit(): void {
     console.log(this.authservice.logedinUserId)
@@ -25,7 +27,7 @@ export class OrderComponent implements OnInit {
       )
       .subscribe({
         next: (response) => {
-          this.MyorderList=response
+          this.MyorderList = response
           console.log(response)
         },
         error: (error) => {

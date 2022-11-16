@@ -40,8 +40,10 @@ export class CartComponent implements OnInit, AfterContentChecked {
 
   ngAfterContentChecked(): void {
     this.totalCardPrice = 0
-    for (this.i = 0; this.i < this.MyCardItems.length; this.i++) {
-      this.totalCardPrice += this.MyCardItems[this.i].total
+    if(this.MyCardItems){
+      for (this.i = 0; this.i < this.MyCardItems.length; this.i++) {
+        this.totalCardPrice += this.MyCardItems[this.i].total
+      }
     }
   }
 
