@@ -1,7 +1,6 @@
-import { AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit, Component, ElementRef, Input, OnChanges, OnDestroy, OnInit, SimpleChanges, ViewChild } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CategoryService } from 'src/app/_services/category.service';
-import { ProductService } from 'src/app/_services/product.service';
 import { Category } from 'src/app/_models/category';
 import { Product } from 'src/app/_models/product';
 import { CategoryWithProducts } from 'src/app/_models/category-with-products';
@@ -12,20 +11,17 @@ import { CategoryWithProducts } from 'src/app/_models/category-with-products';
   styleUrls: ['./allproduct.component.css']
 })
 
-export class AllproductComponent implements OnInit, AfterContentInit {
+export class AllproductComponent implements OnInit {
 
-  categories: Category[] 
+  categories: Category[]
   productContainer: Product[]
   curuntId: number = 0
   showCategory!: CategoryWithProducts
-  flage:boolean=false
+  flage: boolean = false
 
   constructor(
-    private productService: ProductService,
     private activeRouter: ActivatedRoute,
-    private categoryservice: CategoryService,
-    private router: Router) {
-
+    private categoryservice: CategoryService,) {
     this.categories = []
     this.productContainer = []
   }
@@ -35,30 +31,20 @@ export class AllproductComponent implements OnInit, AfterContentInit {
     console.log(this.curuntId);
     this.categoryservice.getAllCategory().subscribe(cats => {
       this.categories = cats;
-    }) 
+    })
     this.categoryservice.getCategoryById(this.curuntId).subscribe(cat => {
       this.showCategory = cat;
       this.productContainer = this.showCategory.products;
-      this.flage=true
+      this.flage = true
     })
-    
   }
 
-  ngAfterContentInit() {
-    this.flage=false
-    this.categoryservice.getCategoryById(this.curuntId).subscribe(cat => {
-      this.showCategory = cat;
-      this.productContainer = this.showCategory.products;
-      this.flage=true
-      this.curuntId = Number(this.activeRouter.snapshot.paramMap.get("Cid"))
-    })
-  }
   changedata(catid: number) {
-    this.flage=false
+    this.flage = false
     this.categoryservice.getCategoryById(catid).subscribe(cat => {
       this.showCategory = cat;
       this.productContainer = this.showCategory.products;
-      this.flage=true
+      this.flage = true
       this.curuntId = Number(this.activeRouter.snapshot.paramMap.get("Cid"))
     })
   }

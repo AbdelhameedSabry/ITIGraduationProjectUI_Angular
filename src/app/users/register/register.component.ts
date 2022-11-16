@@ -12,7 +12,6 @@ import { RegisterService } from "src/app/_services/register.service";
 })
 export class RegisterComponent implements OnInit {
 
-  regflag: boolean = false
   errflag: boolean = false
   constructor(private _registerService: RegisterService, private route: Router) { }
 
@@ -39,28 +38,15 @@ export class RegisterComponent implements OnInit {
       )
       .subscribe({
         next: (response) => {
-          this.errflag = false
-          this.regflag = true
-          console.log(this.regflag)
         },
         error: (error) => {
-          this.regflag = false
           this.errflag = true
         },
         complete: () => {
-          this.regflag = true
+          this.route.navigateByUrl('/Login')
         }
       })
   }
-
-  redirecttologin() {
-    this.route.navigateByUrl('/Login')
-  }
-
-  redirecttolproducts() {
-    this.route.navigateByUrl('/Category/2/Products')
-  }
-
   changeflag() {
     this.errflag = false
   }

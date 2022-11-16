@@ -54,8 +54,8 @@
                   <tr *ngFor="let item of MyorderList?.shoppingcardheader let i = index">
                     <th>{{ i + 1 }}</th>
                     <td>{{ item.date | date:'shortDate' }}</td>
-                    <td>Total</td>
-                    <td><span class="badge badge-info">Status</span></td>
+                    <td>{{item}}</td>
+                    <td><span class="badge badge-info">Running</span></td>
                     <td>
                       <a [routerLink]="['/myOrders', 'orderDetails', item.id]" class="btn btn-primary btn-sm">View</a>
                     </td>

@@ -1,34 +1,3 @@
-<!--Modal: modalRelatedContent-->
-<div class="modal fade right" *ngIf="regflag==true" id="modalRelatedContent" tabindex="-1" role="dialog"
-  aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="false">
-  <div class="modal-dialog modal-side modal-bottom-right modal-notify modal-info" role="document">
-    <!--Content-->
-    <div class="modal-content">
-      <!--Header-->
-      <div class="modal-header bg-primary">
-        <p class="heading">Register Success</p>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true" class="white-text">&times;</span>
-        </button>
-      </div>
-      <!--Body-->
-      <div class="modal-body d-flex justify-content-center">
-        <div class="row">
-          <div class="col-6">
-            <button (click)="redirecttologin()" routerLink="/Login" class="btn btn-success">Login
-              Now</button>
-          </div>
-          <div class="col-6">
-            <button (click)="redirecttolproducts()" routerLink="/Category/2/Products" class="btn btn-info"
-              style="width: 120px">Shopping Now</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!--/.Content-->
-  </div>
-</div>
-<!--Modal: modalRelatedContent-->
 <div id="all">
   <div id="content">
     <div class="container">
@@ -40,23 +9,73 @@
             <form action="customer-orders.html" method="post" [formGroup]="RegisterForm" (ngSubmit)="Register()">
               <div class="form-group">
                 <label for="name">User Name</label>
+
+                <!-- userName -->
                 <input (input)="changeflag()" id="name" type="text" class="form-control" formControlName="userName">
+                <div *ngIf="RegisterForm.get('userName')!.invalid && 
+                RegisterForm.get('userName')!.errors && 
+                (RegisterForm.get('userName')!.dirty || RegisterForm.get('userName')!.touched)">
+                  <small class="text-danger" *ngIf="RegisterForm.get('userName')!.hasError('required')">
+                    This field is required.
+                  </small>
+                </div>
               </div>
               <div class="form-group">
                 <label for="email">Email</label>
+                <!-- Email -->
                 <input (input)="changeflag()" id="email" type="text" class="form-control" formControlName="email">
+                <div *ngIf="RegisterForm.get('email')!.invalid && 
+                RegisterForm.get('email')!.errors && 
+                (RegisterForm.get('email')!.dirty || RegisterForm.get('email')!.touched)">
+                  <small class="text-danger" *ngIf="RegisterForm.get('email')!.hasError('required')">
+                    This field is required.
+                  </small>
+                  <small class="text-danger" *ngIf="RegisterForm.get('email')!.hasError('email')">
+                    Valid Email required
+                  </small>
+                </div>
               </div>
               <div class="form-group">
                 <label for="password">Password</label>
-                <input id="password" type="password" class="form-control" formControlName="password">
+                <!-- Password -->
+                <input (input)="changeflag()" id="password" type="password" class="form-control"
+                  formControlName="password">
+                <div *ngIf="RegisterForm.get('password')!.invalid && 
+                RegisterForm.get('password')!.errors && 
+                (RegisterForm.get('password')!.dirty || RegisterForm.get('password')!.touched)">
+                  <small class="text-danger" *ngIf="RegisterForm.get('password')!.hasError('required')">
+                    This field is required.
+                  </small>
+                  <small class="text-danger" *ngIf="RegisterForm.get('password')!.hasError('pattern')">
+                    Password Should has [@ , A-Z , a-Z ] And Length at least 8 character
+                  </small>
+                </div>
               </div>
               <div class="form-group">
+                <!-- Phone Number -->
                 <label for="PhoneNumber">Phone Number</label>
-                <input id="PhoneNumber" type="text" class="form-control" formControlName="phoneNumber">
+                <input (input)="changeflag()" id="PhoneNumber" type="text" class="form-control"
+                  formControlName="phoneNumber">
+                <div *ngIf="RegisterForm.get('phoneNumber')!.invalid && 
+                RegisterForm.get('phoneNumber')!.errors && 
+                (RegisterForm.get('phoneNumber')!.dirty || RegisterForm.get('phoneNumber')!.touched)">
+                  <small class="text-danger" *ngIf="RegisterForm.get('phoneNumber')!.hasError('minLength')">
+                    MinLength 11 Number
+                  </small>
+                </div>
               </div>
               <div class="form-group">
                 <label>Address</label>
-                <input id="Address" name="Address" type="text" class="form-control" formControlName="address">
+                <!-- Address -->
+                <input (input)="changeflag()" id="Address" name="Address" type="text" class="form-control"
+                  formControlName="address">
+                <div *ngIf="RegisterForm.get('address')!.invalid && 
+                RegisterForm.get('address')!.errors && 
+                (RegisterForm.get('address')!.dirty || RegisterForm.get('address')!.touched)">
+                  <small class="text-danger" *ngIf="RegisterForm.get('address')!.hasError('required')">
+                    This field is required.
+                  </small>
+                </div>
               </div>
               <div class="text-center">
 
