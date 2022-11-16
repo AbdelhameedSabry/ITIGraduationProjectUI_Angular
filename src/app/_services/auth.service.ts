@@ -21,11 +21,14 @@ export class AuthService {
   constructor(private userService: UsersService) {
     const token = Cookies.get('token') as string
     this._isLogedIn$.next(!!token);
-    if ((Cookies.get('token') != null) && (!!this.isLogedIn$)) {
+    if ((Cookies.get('token') != null)) {
       this.logedinUserId = this.getUser(token)
+      this.token = String(Cookies.get('token'))
       console.log(this.logedinUserId)
     }
 
+    if (Cookies.get('username') != null)
+      this._UserName$.next(String(Cookies.get('username')))
   }
 
   login(user: User) {
