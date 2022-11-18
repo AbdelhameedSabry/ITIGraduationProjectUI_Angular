@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  baseUrl: "https://omar25-001-site1.atempurl.com/api/"
+  baseUrl: "http://omar25-001-site1.atempurl.com/api/"
 };
 
 /*
